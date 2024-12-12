@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+  app:
+    build: .
+    ports:
+      - "8090:8090"
+    networks:
+      - my-network
+
+
+
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: deep
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: demo
+    ports:
+      - 5433:5432
+    networks:
+      - my-network
+
+networks:
+  my-network:
+    driver: bridge
+
+
+
